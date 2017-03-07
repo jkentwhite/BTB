@@ -9,11 +9,11 @@
  //The console log will tell you which gateState we are in
 
  //KEY to Lasers: 
- //A: 1,2,3
- //B: 4,5,6
- //C: 7,8,9
- //D: 10,11,12
- //E: 13,14,15
+ //A: 0, 14, 12
+ //B: 1, 2, 3
+ //C: 4, 5, 11
+ //D: 6, 7, 8
+ //E: 9, 10, 13
 
 boolean setupComplete = false;
 
