@@ -1,9 +1,25 @@
 
 void laserSuccess(){
-  textSize(24);
-  background(0,255,0);
-  fill(0);
-  text("Your team has made it across the LASER FIELD!\nPrepare for the next defense mechanism. \n\nSTEP BACK and stand by for further instructions!", width/2, height/3);
+  background(0);
+  fill(0,255,0, alphaCounter);
+  rect(0,0, width, height);  
+  
+   if (alphaUp) {
+    alphaCounter+=5;
+    if (alphaCounter >= 255) {
+      alphaUp =  false;
+    }
+  } else {
+    alphaCounter-=5;
+    if (alphaCounter <= 0) {
+      alphaUp = true;
+    }
+  }
+  
+  //textSize(24);
+  //background(0,255,0);
+  //fill(0);
+  //text("Your team has made it across the LASER FIELD!\nPrepare for the next defense mechanism. \n\nSTEP BACK and stand by for further instructions!", width/2, height/3);
   
   // laser1: OFF
       arduino.digitalWrite(laser1, Arduino.LOW);
@@ -62,7 +78,7 @@ void laserSuccess(){
       laserSuccess = false;
       laserDeactivatedScreen = true;
       //laserDeactivatedScreen = true;
-      
+      excellentWork.stop();
       gasAttackInstr.play();
     }
   }

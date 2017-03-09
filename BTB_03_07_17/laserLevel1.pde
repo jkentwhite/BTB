@@ -1,20 +1,3 @@
-   
- //Level 1 of Laser Field
- //players have to use 2 buttons to get all players across the lasers
- 
- //The default state will be gateState = 4;
- 
- //PRESS Q,W to change to gateState(s) 
- 
- //The console log will tell you which gateState we are in
-
- //KEY to Lasers: 
- //A: 0, 14, 12
- //B: 1, 2, 3
- //C: 4, 5, 11
- //D: 6, 7, 8
- //E: 9, 10, 13
-
 boolean setupComplete = false;
 
 //only for debug readout to see what lasers are ON or OFF
@@ -84,7 +67,7 @@ int [] [] activeReceptorsAll = {
 int [] [] activeReceptorsGS1 = {
 
   { }, //0
-  {3, 4, 5, 6, 7, 8, 9, 11}, //1
+  {1, 4, 5, 8, 9, 11, 12, 13}, //1
   {0, 3, 4, 5, 6, 7, 8, 9, 11}, //2
   {0, 3, 4, 5, 6, 7, 8, 9, 11}, //3
   {0, 4, 5, 6, 7, 8, 9, 11}, //4
@@ -97,8 +80,8 @@ int [] [] activeReceptorsGS1 = {
   {0, 3, 4, 5, 6, 7, 8, 9, 11}, //11
   {0, 3, 4, 5, 6, 7, 8, 9}, //12
   {0, 3, 4, 5, 6, 7, 8, 9},   //13
-  {0, 3, 4, 5, 6, 7, 8, 9 11},   //14
-  {0, 3, 4, 5, 6, 7, 8, 9 11},   //15
+  {0, 3, 4, 5, 6, 7, 8, 9, 11},   //14
+  {0, 3, 4, 5, 6, 7, 8, 9, 11},   //15
  
 };
 
@@ -106,7 +89,7 @@ int [] [] activeReceptorsGS2 = {
 
   { }, //0
   {1, 2, 3, 6, 9, 10, 11, 12, 13, 14}, //1
-  {0, 2, 3, 6, 9, 10, 11, 12, 13, 14}, //2
+  {0, 1, 2, 3, 6, 7, 8, 11, 12, 13, 14}, //2
   {0, 1, 3, 6, 9, 10, 11, 12, 13, 14}, //3
   {0, 1, 2, 6, 9, 10, 11, 12, 13, 14}, //4
   {0, 1, 2,3, 6, 9, 10, 11, 12, 13, 14}, //5
@@ -156,14 +139,17 @@ void laserLevel1() {
       gateState = 5; 
       laserLevel1 = false;
       laserLevelComplete = true;
+      laserReturnInstr.play();
       //OscMessage switchPage = new OscMessage("/2");
       //oscP5.send(switchPage, myRemoteLocation); 
     }
-  } else {
-    gateState = 3;
-  }
+  } 
+  //else {
+  //  gateState = 3;
+  //}
   println("LEVEL ONE");
   println("Press Z to move to level2 Lasers");
+  println("Gate State: " + gateState);
   //println(gateState);
 
 //TouchOSC version
@@ -244,18 +230,18 @@ if(v_push1 == 1.0f) {
       arduino.digitalWrite(laser2, Arduino.LOW);
       readLaser2 = "OFF";
       // laser3: ON
-      arduino.digitalWrite(laser3, Arduino.HIGH);
+      arduino.digitalWrite(laser3, Arduino.LOW);
       readLaser3 = "ON";
       
       //Column B
       // laser4: ON
-      arduino.digitalWrite(laser4, Arduino.LOW);
+      arduino.digitalWrite(laser4, Arduino.HIGH);
       readLaser4 = "ON";
       // laser5: ON
-      arduino.digitalWrite(laser5, Arduino.HIGH);
+      arduino.digitalWrite(laser5, Arduino.LOW);
       readLaser5 = "ON";
       // laser6: OFF
-      arduino.digitalWrite(laser6, Arduino.HIGH);
+      arduino.digitalWrite(laser6, Arduino.LOW);
       readLaser6 = "OFF";
       
       //Column C
@@ -271,10 +257,10 @@ if(v_push1 == 1.0f) {
       
       //Column D
       // laser10: ON
-      arduino.digitalWrite(laser10, Arduino.HIGH);
+      arduino.digitalWrite(laser10, Arduino.LOW);
       readLaser10 = "ON";
       // laser11: ON
-      arduino.digitalWrite(laser11, Arduino.HIGH);
+      arduino.digitalWrite(laser11, Arduino.LOW);
       readLaser11 = "ON";
       // laser12: ON
       arduino.digitalWrite(laser12, Arduino.HIGH);
@@ -285,7 +271,7 @@ if(v_push1 == 1.0f) {
       arduino.digitalWrite(laser13, Arduino.HIGH);
       readLaser13 = "ON";
       // laser14: OFF
-      arduino.digitalWrite(laser14, Arduino.LOW);
+      arduino.digitalWrite(laser14, Arduino.HIGH);
       readLaser14 = "OFF";
       // laser15: ON
       arduino.digitalWrite(laser15, Arduino.HIGH);
@@ -328,7 +314,7 @@ if(v_push1 == 1.0f) {
       arduino.digitalWrite(laser8, Arduino.LOW);
       readLaser8 = "ON";
       // laser9: OFF
-      arduino.digitalWrite(laser9, Arduino.HIGH);
+      arduino.digitalWrite(laser9, Arduino.LOW);
       readLaser9 = "OFF";
       
       //Column D
@@ -336,7 +322,7 @@ if(v_push1 == 1.0f) {
       arduino.digitalWrite(laser10, Arduino.HIGH);
       readLaser10 = "ON";
       // laser11: OFF
-      arduino.digitalWrite(laser11, Arduino.LOW);
+      arduino.digitalWrite(laser11, Arduino.HIGH);
       readLaser11 = "OFF";
       // laser12: ON
       arduino.digitalWrite(laser12, Arduino.HIGH);
@@ -344,10 +330,10 @@ if(v_push1 == 1.0f) {
       
       //Column E
       // laser13: ON
-      arduino.digitalWrite(laser13, Arduino.HIGH);
+      arduino.digitalWrite(laser13, Arduino.LOW);
       readLaser13 = "ON";
       // laser14: ON
-      arduino.digitalWrite(laser14, Arduino.HIGH);
+      arduino.digitalWrite(laser14, Arduino.LOW);
       readLaser14 = "ON";
       // laser15: ON
       arduino.digitalWrite(laser15, Arduino.HIGH);
@@ -597,5 +583,3 @@ if(setupComplete){
   setupComplete = true;
   
 }
-  
-  

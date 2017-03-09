@@ -440,12 +440,12 @@ if(!patternSet){
   }
   
     if (alphaUp) {
-    alphaCounter+=8;
+    alphaCounter+=5;
     if (alphaCounter >= 255) {
       alphaUp =  false;
     }
   } else {
-    alphaCounter-=8;
+    alphaCounter-=5;
     if (alphaCounter <= 0) {
       alphaUp = true;
     }
@@ -469,6 +469,8 @@ if(!patternSet){
     spaceCounterFour = 0;
     
     clearGridSymbolArray();
+    
+    goodJobTeam.play();
     
     floorGridPracticeScreen = false;
     floorGridStartScreen = true;
@@ -499,6 +501,8 @@ if(!patternSet){
       spaceCounterFour = 0;
       
       clearGridSymbolArray();
+      
+      goodJobTeam.play();
     }
   }
   println("FLOOR GRID PRACTICE SCREEN");

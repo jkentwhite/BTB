@@ -1,6 +1,4 @@
-
-
- //Level 2 of Laser Field
+//Level 2 of Laser Field
  //players have to use 4 randomized buttons to get all players across the lasers for a second time
  
  //The default state will be gateState = 4;
@@ -17,12 +15,12 @@
 int [] [] activeReceptorsGS3 = {
 
   { }, //0
-  {1, 2, 3, 4, 5, 8, 10, 11, 12, 13, 14}, //1
+  {0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 14}, //1 **
   {0, 2, 3, 4,  5, 8, 10, 11, 12, 13, 14}, //2
   {0, 1, 3, 4, 5, 8, 10, 11, 12, 13, 14}, //3
   {0, 1, 2, 3, 4, 5, 8, 10, 11, 12, 13,14}, //4
   {0, 1, 2, 3, 4, 5, 8, 10, 11, 12, 13,14}, //5
-  {0, 1, 2, 3, 4. 8, 10, 11, 12, 13, 14}, //6
+  {0, 1, 2, 3, 4, 8, 10, 11, 12, 13, 14}, //6
   {0, 1, 2, 3, 4, 5, 8, 10, 11, 12, 13, 14}, //7
   {0, 1, 2, 3, 4, 5, 8, 10, 11, 12, 13, 14}, //8
   {0, 1, 2, 3, 4, 5, 10, 11, 12, 13, 14}, //9
@@ -39,7 +37,7 @@ int [] [] activeReceptorsGS4 = {
 
   { }, //0
   {1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13}, //1
-  {2, 3, 4, 5, 6, 7, 8, 11, 12, 13}, //2
+  {1, 2, 3, 4, 5, 6, 7, 8, 11, 12, 13}, //2 **
   {1, 3, 4, 5, 6, 7, 8, 11, 12, 13}, //3
   {1, 2, 4, 5, 6, 7, 8, 11, 12, 13}, //4
   {1, 2, 3, 5, 6, 7, 8, 11, 12, 13}, //5
@@ -60,8 +58,8 @@ int [] [] activeReceptorsGS5 = {
 
   { }, //0
   {1, 2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14}, //1
-  {0, 2, 3, 6,7, 8, 9, 10, 11, 12, 13, 14}, //2
-  {0,1, 3, 6,7, 8, 9, 10, 11, 12, 13, 14}, //3
+  {0, 2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14}, //2
+  {2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14}, //3 **
   {0, 1, 2, 6, 7, 8, 9, 10, 11, 12, 13, 14}, //4
   {0, 1, 2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14}, //5
   {0, 1, 2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14}, //6
@@ -83,7 +81,7 @@ int [] [] activeReceptorsGS6 = {
   {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}, //1
   {0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}, //2
   {0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}, //3
-  {0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}, //4
+  {1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14}, //4 **
   {0, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}, //5
   {0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}, //6
   {0, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14}, //7
@@ -141,7 +139,7 @@ void laserLevel2() {
       laserFail = true;
       laserCounter = 150;
       
-      failureRegistered.play();
+      attentionYouHaveFailed.play();
     }
     
     //to move Level2 to Success
@@ -151,7 +149,7 @@ void laserLevel2() {
       laserSuccess = true;
       laserCounter = 150;
       
-      goodJobTeam.play();
+      excellentWork.play();
     }
   } else {
     gateState = 5;
@@ -421,7 +419,7 @@ if(v_push3 == 1.0f) {
       arduino.digitalWrite(laser2, Arduino.HIGH);
       readLaser2 = "ON";
       // laser3: ON
-      arduino.digitalWrite(laser3, Arduino.HIGH);
+      arduino.digitalWrite(laser3, Arduino.LOW);
       readLaser3 = "ON";
       
       //Column B
@@ -755,11 +753,23 @@ if(v_push3 == 1.0f) {
   //debugging on screen to determine if lasers are on or off uncomment below to see on the display
 if(!instructionsComplete){
   background(0);
-  fill(0,255,0);
+  fill(0,0,255, alphaCounter);
+  rect(0,0, width, height);
   //textAlign(CENTER);
-  textSize(24);
-  text("Your team has crossed the LASER FIELD. \nNow you must return to the other side. \nThe buttons have been reconfigured, and two more are now available. \nRemember you can only hit a total of 10 lasers. \nFailure will cost precious time, delay your access to the Bomb, \nand increase the likelihood of detonation.", width/2, height/4);
-} else {
+  
+   if (alphaUp) {
+    alphaCounter+=5;
+    if (alphaCounter >= 255) {
+      alphaUp =  false;
+    }
+  } else {
+    alphaCounter-=5;
+    if (alphaCounter <= 0) {
+      alphaUp = true;
+    }
+  } 
+  
+  } else {
   
     //laserStatus = arduino.analogRead(i);
     //textSize(32);
@@ -787,7 +797,7 @@ if(!instructionsComplete){
   //text("laser 6: " + readLaser6, width/2, height/11*6);
   //text("laser 7: " + readLaser7, width/2, height/11*7);
   //text("laser 8: " + readLaser8, width/2, height/11*8);
-  //text("laser 9: " + readLaser9, width/2, height/11*9);
+  //text("laser 9: " + readr, width/2, height/11*9);
   //text("laser 10: " + readLaser10, width/2, height/11*10);
   //text("laser 11: " + readLaser11, width/2, height/11*11);
   //text("laser 12: " + readLaser12, width/2, height/11*12);

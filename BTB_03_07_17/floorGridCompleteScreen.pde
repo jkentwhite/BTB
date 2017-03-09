@@ -4,17 +4,53 @@ int validationBar = 150;
 
 
 int shortTimer = 200;
+boolean proceedToBombChamber = false;
 
 void floorGridCompleteScreen() {
-  background(0);
-
-  textAlign(CENTER);
-  textSize(24);
-  noStroke();
-  fill(0, 255, 0, alphaCounter);
-  rect(0,0, width, height);
   
-  text("You have gained access to the bomb chamber. \nENTER AT YOUR OWN RISK and \nDO WHATEVER IS NECESSARY to deactivate the device.", width/2, height/3);
+  if(!proceedToBombChamber){
+    background(0);
+    fill(0,255,0, alphaCounter);
+    rect(0,0, width, height);
+  } else {
+    background(0);
+    fill(0,0,255, alphaCounter);
+    rect(0,0, width, height);
+  }
+  
+  if (alphaUp) {
+    alphaCounter+=5;
+    if (alphaCounter >= 255) {
+      alphaUp =  false;
+    }
+  } else {
+    alphaCounter-=5;
+    if (alphaCounter <= 0) {
+      alphaUp = true;
+    }
+  }
+  
+  if(keyPressed){
+    if(key == ' '){
+      proceedToBombChamber = true;
+      proceedBombChamber.play();
+    }
+    if(key == 's' || key == 'S'){
+      proceedBombChamber.stop();
+    }
+  }
+  println("FLOOR GRID COMPLETE SCREEN");
+  println("Press SPACEBAR to trigger Proceed to bomb chamber audio");
+  println("Press S to stop playing audio");
+  //background(0);
+
+  //textAlign(CENTER);
+  //textSize(24);
+  //noStroke();
+  //fill(0, 255, 0, alphaCounter);
+  //rect(0,0, width, height);
+  
+  //text("You have gained access to the bomb chamber. \nENTER AT YOUR OWN RISK and \nDO WHATEVER IS NECESSARY to deactivate the device.", width/2, height/3);
   //if (validationBar < 950) {
   //  fill(0, 255, 0, alphaCounter);
   //  float percentageReadout = map(validationBar, 0, 950, 0, 100);
@@ -36,17 +72,7 @@ void floorGridCompleteScreen() {
 
 
 
-  if (alphaUp) {
-    alphaCounter+=8;
-    if (alphaCounter >= 255) {
-      alphaUp =  false;
-    }
-  } else {
-    alphaCounter-=8;
-    if (alphaCounter <= 0) {
-      alphaUp = true;
-    }
-  }
+  
   //if (countdownFive > 0) {
   //  textSize(48);
   //  fill(0,255,0);

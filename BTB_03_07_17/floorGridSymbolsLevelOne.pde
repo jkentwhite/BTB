@@ -416,6 +416,8 @@ void floorGridSymbolsLevelOne() {
     countdownFive = 50;
     numberCorrect = 0;
     clearGridSymbolArray();
+    
+    goodJobTeam.play();
   }
   if (levelCountdownLevelOne < 40) {
     textSize(64);
@@ -447,6 +449,8 @@ void floorGridSymbolsLevelOne() {
       spaceCounterTwo = 0;
       spaceCounterThree = 0;
       spaceCounterFour = 0;
+      
+      goodJobTeam.play();
     }
   }
   //println(patternNumber);

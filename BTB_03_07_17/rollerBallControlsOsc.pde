@@ -6,8 +6,21 @@
     
 void rollerBallControlOsc(){
 
-    background(0);
-    
+  background(0);
+  fill(0,0,255, alphaCounter);
+  rect(0,0, width, height);  
+  
+   if (alphaUp) {
+    alphaCounter+=5;
+    if (alphaCounter >= 255) {
+      alphaUp =  false;
+    }
+  } else {
+    alphaCounter-=5;
+    if (alphaCounter <= 0) {
+      alphaUp = true;
+    }
+  }
     
 
     
@@ -33,6 +46,7 @@ void rollerBallControlOsc(){
           floorGridInstr.play();
         }
       }
+      println("ROLLERBALL SCREEN/UNITY");
       println("Press SPACEBAR to move to FloorGrid Intro");
     
   

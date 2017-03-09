@@ -430,7 +430,7 @@ for (Blob b : blobs) {
     numberCorrect = 0;
     clearGridSymbolArray();
     
-    goodJobTeam.play();
+    excellentWork.play();
   }
   if (levelCountdownLevelFour < 40) {
     textSize(80);
@@ -517,7 +517,7 @@ for (Blob b : blobs) {
       spaceCounterFour = 0;
       clearGridSymbolArray();
       
-      goodJobTeam.play();
+      excellentWork.play();
     }
   }
   //println("pattern number: " + patternNumber);

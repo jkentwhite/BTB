@@ -1,10 +1,28 @@
 int laserCounter = 150;
 
 void laserFail(){
-  textSize(24);
-  background(255,0,0);
-  fill(0);
-  text("Your team has failed to cross the LASER FIELD! \nSTANDBY for further instructions!", width/2, height/3);
+  
+  background(0);
+  fill(255,0,0, alphaCounter);
+  rect(0,0, width, height);  
+  
+   if (alphaUp) {
+    alphaCounter+=5;
+    if (alphaCounter >= 255) {
+      alphaUp =  false;
+    }
+  } else {
+    alphaCounter-=5;
+    if (alphaCounter <= 0) {
+      alphaUp = true;
+    }
+  }
+  
+  
+  //textSize(24);
+  //background(255,0,0);
+  //fill(0);
+  //text("Your team has failed to cross the LASER FIELD! \nSTANDBY for further instructions!", width/2, height/3);
   
   laserCounter--;
   // laser1: OFF
@@ -64,6 +82,7 @@ void laserFail(){
       laserDeactivatedScreen = true;
       //laserDeactivatedScreen = true;
       
+      attentionYouHaveFailed.stop();
       gasAttackInstr.play();
 
     }

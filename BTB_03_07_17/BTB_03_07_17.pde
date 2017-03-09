@@ -68,7 +68,7 @@ SoundFile laserActivate, laserMusic, floorGridMusic;
 SoundFile laserInstr, gasAttackInstr, rollerBallInstr, floorGridInstr;
 SoundFile grinchGas, avoidTheLasers, poitOfTheLasers, iveSeenBetter, failureRegistered;
 SoundFile goodJobTeam, rememberToCommunicate, moveFaster, uCanDoBetter, selfCentered;
-
+SoundFile attentionYouHaveFailed, excellentWork, warningFailure, proceedBombChamber, laserReturnInstr;
 //booleans for all of the patterns in Level 3
 boolean pattern1;
 boolean pattern1a;
@@ -133,7 +133,7 @@ boolean laserLevelComplete;
 
 //create variables for kinect depth threshold
 int minTreshold = 940;//340;
-int maxThreshold = 960;//380;
+int maxThreshold = 955;//380;
 
 //variable for triggerButtons pin assignments
 int triggerButton1 = 31;
@@ -419,7 +419,7 @@ int spaceCounterTwo = 0;
 int spaceCounterThree = 0;
 int spaceCounterFour = 0;
 
-int burstSpeed = 20;
+int burstSpeed = 10;
 
 int laserResetCounter = 50;
 
@@ -462,7 +462,6 @@ void setup(){
   
   //sb = new ScreenBroadcast();
   
-  laserVideoIntro = new Movie(this, "laserVideoIntro.mov");
   
   background(0);
 
@@ -545,10 +544,10 @@ void setup(){
   laserMusic = new SoundFile(this, "LasersOnMixv1.wav");
   floorGridMusic =new SoundFile(this, "umami.mp3");
   
-  laserInstr = new SoundFile(this, "laserField.wav");
-  gasAttackInstr = new SoundFile(this, "gasAttack.wav");
-  rollerBallInstr = new SoundFile(this, "virusBall.wav");
-  floorGridInstr = new SoundFile(this, "humanKeypad.wav");
+  laserInstr = new SoundFile(this, "laserMazeRevised.wav");
+  gasAttackInstr = new SoundFile(this, "gasAttackRevised.wav");
+  rollerBallInstr = new SoundFile(this, "cyberballAudio.wav");
+  floorGridInstr = new SoundFile(this, "humanKeypadRevised.wav");
   
   grinchGas = new SoundFile(this, "grinchGas.wav");
   avoidTheLasers = new SoundFile(this, "avoidTheLasers.wav");
@@ -560,6 +559,12 @@ void setup(){
   moveFaster = new SoundFile(this, "moveFaster.wav");
   uCanDoBetter = new SoundFile(this, "uCanDoBetter.wav");
   selfCentered = new SoundFile(this, "selfCentered.wav");
+  
+  attentionYouHaveFailed = new SoundFile(this, "attentionYouHaveFailed.wav");
+  excellentWork = new SoundFile(this, "excellentWork.wav");
+  warningFailure = new SoundFile(this, "warningFailure.wav");
+  proceedBombChamber = new SoundFile(this, "proceedBombChamber.wav");
+  laserReturnInstr = new SoundFile(this, "laserReturnInstr.wav");
   
   for (int i = 0; i < gridRectOccupied.length; i++) {
     for( int j = 0; j < gridRectOccupied[i].length; j++){
