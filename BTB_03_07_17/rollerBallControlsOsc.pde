@@ -2,7 +2,8 @@
     int trigger2;
     int trigger3;
     int trigger4;
-    
+
+
     
 void rollerBallControlOsc(){
 
@@ -26,28 +27,25 @@ void rollerBallControlOsc(){
     
     if(keyPressed){
         if(key == '1'){
-        trigger1 = 1;
+          rollerBall = false;
+          rollerBallSuccess = true;
+          rollerBallInstr.stop();
+          excellentWork.play();
         }
         if(key == '2'){
-        trigger2 = 1;
-        }
-        if(key == '3'){
-        trigger3 = 1;
-        }
-        if(key == '4'){
-        trigger4 = 1;
-        }
-        
-        if(key == ' '){
           rollerBall = false;
-          blackScreenIntro = true;
-          
+          rollerBallFail = true;
           rollerBallInstr.stop();
-          floorGridInstr.play();
+          attentionYouHaveFailed.play();
         }
+      
+        
+       
       }
       println("ROLLERBALL SCREEN/UNITY");
-      println("Press SPACEBAR to move to FloorGrid Intro");
+      println("Press 1 to move to rollerBall Success");
+      println("Press 2 to move to rollerBall Fail");
+      
     
   
     trigger1 = arduino.digitalRead(triggerButton1);
@@ -57,10 +55,10 @@ void rollerBallControlOsc(){
     
     
     
-    println("trigger 1: " + trigger1);
-    println("trigger 2: " + trigger2);
-    println("trigger 3: " + trigger3);
-    println("trigger 4: " + trigger4);
+    //println("trigger 1: " + trigger1);
+    //println("trigger 2: " + trigger2);
+    //println("trigger 3: " + trigger3);
+    //println("trigger 4: " + trigger4);
     
     sendValue(trigger1, trigger2, trigger3, trigger4);
     

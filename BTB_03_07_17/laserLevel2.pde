@@ -96,7 +96,7 @@ int [] [] activeReceptorsGS6 = {
  
 };
 
-boolean instructionsComplete = false;
+boolean instructionsComplete = true;
 
 void laserLevel2() {
  
@@ -127,9 +127,9 @@ void laserLevel2() {
     }
     
     //to remove instructions and display hit counter
-    if(key == '0'){
-      instructionsComplete = true;
-    }
+    //if(key == '0'){
+    //  instructionsComplete = true;
+    //}
     
     //to move Level 2 to Failure of challenge
     if (key == ' ' || key == ' ') {
@@ -158,7 +158,7 @@ void laserLevel2() {
   println("LEVEL TWO");
   println("Press SPACEBAR to move to FailScreen");
   println("Press C to move to SuccessScreen");
-  println("Press 0 to remove instructions and display hit counter");
+  //println("Press 0 to remove instructions and display hit counter");
 
 //TouchOSC version
 if(v_push3 == 1.0f) {

@@ -149,7 +149,7 @@ void laserLevel1() {
   //}
   println("LEVEL ONE");
   println("Press Z to move to level2 Lasers");
-  println("Gate State: " + gateState);
+  //println("Gate State: " + gateState);
   //println(gateState);
 
 //TouchOSC version

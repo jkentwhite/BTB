@@ -82,5 +82,6 @@ void laserSuccess(){
       gasAttackInstr.play();
     }
   }
+  println("LASER SUCCESS SCREEN");
   println("Press V to move to Gas Attack");
 }

@@ -1,3 +1,5 @@
+int floorGridLevel;
+
 void floorGridStartScreen() {
 
   //clear the screen
@@ -14,15 +16,19 @@ void floorGridStartScreen() {
   textSize(64);
   fill(255);
   if (!levelOnePlayed) {
+    floorGridLevel = 1;
     text("WAY TO GO! \nNOW LOOK FOR THIS SYMBOL:", width/2, height/4);
     image(hawk, width/2, height/2+100);
   } else if (!levelTwoPlayed) {
+    floorGridLevel = 2;
     text("WAY TO GO! \nNOW LOOK FOR THIS SYMBOL:", width/2, height/4);
     image(bomb, width/2, height/2+100);  
   } else if (!levelThreePlayed) {
+    floorGridLevel = 3;
     text("WAY TO GO! \nNOW LOOK FOR THIS SYMBOL:", width/2, height/4);
     image(skull, width/2, height/2+100);
   } else {
+    floorGridLevel = 4;
     text("WAY TO GO! \nNOW LOOK FOR THIS SYMBOL:", width/2, height/4);
     image(eagle, width/2, height/2+50);
     text("AVOID THE RED BURST!", width/2, height/5*4);
@@ -69,6 +75,6 @@ void floorGridStartScreen() {
     }
     }
   }
-  println("FLOOR GRID SYMBOL SCREEN");
-  println("Press SPACEBAR to move to next level of Floorgrid");
+  println("FLOOR GRID SYMBOL SCREEN LEVEL: " + floorGridLevel);
+  println("Press SPACEBAR to move to level " + floorGridLevel +" of Floorgrid");
 }

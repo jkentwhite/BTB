@@ -25,7 +25,8 @@ void laserLevelComplete(){
         if(key == '2'){
           laserLevelComplete = false;
           laserLevel2 = true;
-        }
+          laserReturnInstr.stop();
+         }
         }
         println("LASER LEVEL ONE SUCCESS");
         println("Press 2 to move to level 2");

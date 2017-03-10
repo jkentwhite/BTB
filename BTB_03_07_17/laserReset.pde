@@ -2,7 +2,7 @@
 void laserReset(){
   background(0);
   textSize(24);
-  text("Your team has made 10 errors. \nReturn to safety behind the \ngreen laser on the floor as the system resets.", width/2, height/3);
+  text("Your team has made too many errors. \nReturn to safety behind the \ngreen laser on the floor as the system resets.", width/2, height/3);
   
   
   if(keyPressed){
@@ -18,6 +18,7 @@ void laserReset(){
      
     }
   }
+  println("LASER RESET SCREEN");
   println("Press R to return to laser level, once all players have moved to reset positions");
   //laserResetCounter--;
   

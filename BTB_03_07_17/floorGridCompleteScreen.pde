@@ -32,16 +32,15 @@ void floorGridCompleteScreen() {
   
   if(keyPressed){
     if(key == ' '){
+      floorGridComplete = false;
       proceedToBombChamber = true;
       proceedBombChamber.play();
     }
-    if(key == 's' || key == 'S'){
-      proceedBombChamber.stop();
-    }
+    
   }
   println("FLOOR GRID COMPLETE SCREEN");
-  println("Press SPACEBAR to trigger Proceed to bomb chamber audio");
-  println("Press S to stop playing audio");
+  println("Press SPACEBAR to trigger Proceed to bomb chamber screen");
+  //println("Press S to stop playing audio");
   //background(0);
 
   //textAlign(CENTER);
