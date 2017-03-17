@@ -149,7 +149,7 @@ void laserLevel1() {
   //}
   println("LEVEL ONE");
   println("Press Z to move to level2 Lasers");
-  //println("Gate State: " + gateState);
+  println("Gate State: " + gateState);
   //println(gateState);
 
 //TouchOSC version
@@ -577,8 +577,12 @@ if(setupComplete){
   //write to the console which gateState we are in at the moment
  // println("Lasers Triggered: " + hitLaserCounter);
   
-  if(hitLaserCounter >= 20){
-    laserReset = true;
+  if(hitLaserCounter >= 25){
+      gateState = 0; 
+      delay(100);
+      laserLevel1 = false;
+      laserFail = true;
+      laserCounter = 150;
   }
   setupComplete = true;
   
