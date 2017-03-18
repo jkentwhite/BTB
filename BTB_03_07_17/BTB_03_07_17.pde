@@ -1,5 +1,25 @@
 /* NOTES FOR RUNNING THE SKETCH:
-
+ Upon starting the sketch, a blank screen will be displayed and when everything is running, 'ready' will appear in the console log.
+ PRESS SPACEBAR to move to the laser gate puzzle.
+ 
+ Once the laser gates are up and running, 
+ The default state will be gateState = 0;
+ PRESS 1-0 digits to change to gateState(s) 1-10 and PRESS Y,U,I,O,P to move through 11-15
+ Y = 11
+ U = 12
+ I = 13
+ O = 14
+ P = 15
+ I tried the plus and minus key to move up and down but the keyPresses were counting multiple and causing the gateState to be out of bounds for the sensor array
+ The console log will tell you which gateState we are in so it should be pretty easy to move back and forth by touching the appropriate key
+ PRESS Z to move to floor grid.
+ 
+ 
+ I tried to fix all problems that were obvious in floorgrid including the timer and the obstacle being on the same page and the pattern stalling at a certain point.
+ The console readout during any level of floor grid should be telling us what number pattern we are on. if it still is not working, we can use the info as a clue as to why not.
+ Floor grid is fairly automated and will move from one level to the next through four levels and then end with an intro screen to gas attack then turn to black.
+ At anytime during floorgrid on any level, 
+ PRESS Q to move to the next level.
  */
 
 
@@ -49,6 +69,9 @@ SoundFile laserInstr, gasAttackInstr, rollerBallInstr, floorGridInstr;
 SoundFile grinchGas, avoidTheLasers, poitOfTheLasers, iveSeenBetter, failureRegistered;
 SoundFile goodJobTeam, rememberToCommunicate, moveFaster, uCanDoBetter, selfCentered;
 SoundFile attentionYouHaveFailed, excellentWork, warningFailure, proceedBombChamber, laserReturnInstr;
+SoundFile MinRemain15, TimeUp321, SecRemain10, SecRemain30, MinRemain1, MinRemain2, MinRemain3, MinRemain5, MinRemain7;
+SoundFile OutOfTime, OutOfTime2, Goodbye321;
+
 //booleans for all of the patterns in Level 3
 boolean pattern1;
 boolean pattern1a;
@@ -110,8 +133,6 @@ boolean gasAttackFail;
 boolean gasAttackSuccess;
 boolean laserReset;
 boolean laserLevelComplete;
-boolean rollerBallSuccess = false;
-boolean rollerBallFail = false;
 
 //create variables for kinect depth threshold
 int minTreshold = 940;//340;
@@ -470,7 +491,7 @@ void setup(){
   laserLevelComplete = false;
 
   //initialize arduino and configure port
-  arduino = new Arduino(this, Arduino.list()[1], 57600);
+  arduino = new Arduino(this, Arduino.list()[4], 57600);
   ////designate the laserConfigOne as an OUTPUT for turning the lasers on and off
   ////arduino.pinMode(laserConfigOne, Arduino.OUTPUT);
   arduino.pinMode(laser1, Arduino.OUTPUT);
@@ -548,6 +569,19 @@ void setup(){
   proceedBombChamber = new SoundFile(this, "proceedBombChamber.wav");
   laserReturnInstr = new SoundFile(this, "laserReturnInstr.wav");
   
+  MinRemain15 = new SoundFile(this, "15MinRemain.wav");
+  TimeUp321 = new SoundFile(this, "321TimeUp.wav");
+  SecRemain10 = new SoundFile(this, "10SecRemain.wav");
+  SecRemain30 = new SoundFile(this, "30SecRemain.wav");
+  MinRemain1 = new SoundFile(this, "1MinRemain.wav");
+  MinRemain2 = new SoundFile(this, "2Minremain.wav");
+  MinRemain3 = new SoundFile(this, "3MinRemain.wav");
+  MinRemain5 = new SoundFile(this, "5MinRemain.wav");
+  MinRemain7 = new SoundFile(this, "7MinRemain.wav");
+  OutOfTime = new SoundFile(this, "YouAreOutOfTime.wav");
+  OutOfTime2 = new SoundFile(this, "YouAreOutOfTime2.wav");
+  Goodbye321 = new SoundFile(this, "321Goodbye.wav");
+  
   for (int i = 0; i < gridRectOccupied.length; i++) {
     for( int j = 0; j < gridRectOccupied[i].length; j++){
       gridRectOccupied[i][j] = false;
@@ -595,10 +629,6 @@ void draw()
     gasAttackFail();
   } else if(rollerBall){
     rollerBallControlOsc();
-  } else if(rollerBallSuccess){
-    rollerBallSuccess();
-  } else if(rollerBallFail){
-    rollerBallFail();
   } else if (blackScreenIntro) {
     blackScreenIntro();
   } else if (floorGridInstScreen) {
@@ -617,8 +647,6 @@ void draw()
     floorGridSymbolsLevelFour();
   }  else if (floorGridComplete) {
     floorGridCompleteScreen();
-  } else if (proceedToBombChamber){
-    bombChamber();
   }
   
   //sb.BroadcastSplit(get());
@@ -658,7 +686,42 @@ void keyPressed(){
     selfCentered.play();
   }
   
-  
+  if(key == '=' || key == '+'){
+    Goodbye321.play();
+  }
+  if(key == '-' || key == '_'){
+    TimeUp321.play();
+  }
+  if(key == '0'){
+    OutOfTime.play();
+  }
+  if(key == '9'){
+    OutOfTime2.play();
+  }
+  if(key == '8'){
+    MinRemain15.play();
+  }
+  if(key == '7'){
+    MinRemain7.play();
+  }
+  if(key == '6'){
+    MinRemain5.play();
+  }
+  if(key == '5'){
+    MinRemain3.play();
+  }
+  if(key == '4'){
+    MinRemain2.play();
+  }
+  if(key == '3'){
+    MinRemain1.play();
+  }
+  if(key == '2'){
+    SecRemain30.play();
+  }
+  if(key == '1'){
+    SecRemain10.play();
+  }
 }
 
 
