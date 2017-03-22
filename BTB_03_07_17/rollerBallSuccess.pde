@@ -16,7 +16,7 @@ void rollerBallSuccess(){
   }
    if(keyPressed){
    if(key == ' '){
-          rollerBallSuccess = false;
+          //rollerBallSuccess = false;
           blackScreenIntro = true;          
           floorGridInstr.play();
         }

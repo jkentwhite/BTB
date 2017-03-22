@@ -1,25 +1,4 @@
-/* NOTES FOR RUNNING THE SKETCH:
- Upon starting the sketch, a blank screen will be displayed and when everything is running, 'ready' will appear in the console log.
- PRESS SPACEBAR to move to the laser gate puzzle.
- 
- Once the laser gates are up and running, 
- The default state will be gateState = 0;
- PRESS 1-0 digits to change to gateState(s) 1-10 and PRESS Y,U,I,O,P to move through 11-15
- Y = 11
- U = 12
- I = 13
- O = 14
- P = 15
- I tried the plus and minus key to move up and down but the keyPresses were counting multiple and causing the gateState to be out of bounds for the sensor array
- The console log will tell you which gateState we are in so it should be pretty easy to move back and forth by touching the appropriate key
- PRESS Z to move to floor grid.
- 
- 
- I tried to fix all problems that were obvious in floorgrid including the timer and the obstacle being on the same page and the pattern stalling at a certain point.
- The console readout during any level of floor grid should be telling us what number pattern we are on. if it still is not working, we can use the info as a clue as to why not.
- Floor grid is fairly automated and will move from one level to the next through four levels and then end with an intro screen to gas attack then turn to black.
- At anytime during floorgrid on any level, 
- PRESS Q to move to the next level.
+/* 
  */
 
 
@@ -215,6 +194,7 @@ PImage imgVideo, img;
 PImage bomb, skull, hawk, eagle;
 PImage greyBomb, greySkull, greyHawk, greyEagle, glowEagle;
 PImage greenLock, redLock;
+PImage btbLogo;
 
 //create variables for the size of the grid rectangles for floorgrid
 int gridX = 256;
@@ -491,7 +471,7 @@ void setup(){
   laserLevelComplete = false;
 
   //initialize arduino and configure port
-  arduino = new Arduino(this, Arduino.list()[4], 57600);
+  arduino = new Arduino(this, Arduino.list()[3], 57600);
   ////designate the laserConfigOne as an OUTPUT for turning the lasers on and off
   ////arduino.pinMode(laserConfigOne, Arduino.OUTPUT);
   arduino.pinMode(laser1, Arduino.OUTPUT);
@@ -533,6 +513,7 @@ void setup(){
   greenLock = loadImage("greenLock.png");
   redLock = loadImage("redLock.png");
   glowEagle = loadImage("glowEagle.png");
+  btbLogo = loadImage("logo.png");
 
   //initialize the minim files
   minim = new Minim(this);

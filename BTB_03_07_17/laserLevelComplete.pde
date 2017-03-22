@@ -22,12 +22,12 @@ void laserLevelComplete(){
       //text("Way to go! Now prepare for Level 2!", width/2, height/3);
       
       if(keyPressed){
-        if(key == '2'){
+        if(key == 't' || key == 'T'){
           laserLevelComplete = false;
           laserLevel2 = true;
           laserReturnInstr.stop();
          }
         }
         println("LASER LEVEL ONE SUCCESS");
-        println("Press 2 to move to level 2");
+        println("Press T to move to level 2");
   }

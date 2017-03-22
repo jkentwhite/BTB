@@ -1,5 +1,7 @@
 void blackScreen(){
   background(0);
+  imageMode(CENTER);
+  image(btbLogo, width/2, height/2, width - 50, btbLogo.height);
         
         
   arduino.digitalWrite(laser1, Arduino.HIGH);

@@ -23,12 +23,12 @@ void gasAttackFail(){
   if(keyPressed){
     if(key == 'x' || key == 'X'){
       gasAttackFail = false;
-      rollerBall = true;
+      blackScreenIntro = true;
       attentionYouHaveFailed.stop();
-      rollerBallInstr.play();
+      floorGridInstr.play();
     }
   }
   println("GAS ATTACK FAIL SCREEN");
-  println("Press X to move to rollerBallScreen");
+  println("Press X to move to FloorGrid Screen");
 
 }

@@ -149,7 +149,7 @@ void laserLevel1() {
   //}
   println("LEVEL ONE");
   println("Press Z to move to level2 Lasers");
-  println("Gate State: " + gateState);
+  //println("Gate State: " + gateState);
   //println(gateState);
 
 //TouchOSC version
@@ -549,9 +549,9 @@ if(setupComplete){
     //spacing+=30;
     fill(255, 0, 0);
     textSize(256);
-    text(hitLaserCounter, width/2, height/3);
+    text(25 - hitLaserCounter, width/2, height/3);
     textSize(64);
-    text("LASERS HIT", width/2, height/2);
+    text("LASERS LEFT TO HIT", width/2, height/2);
     
   }
   
@@ -583,6 +583,8 @@ if(setupComplete){
       laserLevel1 = false;
       laserFail = true;
       laserCounter = 150;
+      
+      attentionYouHaveFailed.play();
   }
   setupComplete = true;
   

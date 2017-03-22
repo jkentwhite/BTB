@@ -96,7 +96,7 @@ int [] [] activeReceptorsGS6 = {
  
 };
 
-boolean instructionsComplete = false;
+boolean instructionsComplete = true;
 
 void laserLevel2() {
  
@@ -127,9 +127,9 @@ void laserLevel2() {
     }
     
     //to remove instructions and display hit counter
-    if(key == '0'){
-      instructionsComplete = true;
-    }
+    //if(key == '0'){
+    //  instructionsComplete = true;
+    //}
     
     //to move Level 2 to Failure of challenge
     if (key == ' ' || key == ' ') {
@@ -158,7 +158,7 @@ void laserLevel2() {
   println("LEVEL TWO");
   println("Press SPACEBAR to move to FailScreen");
   println("Press C to move to SuccessScreen");
-  println("Press 0 to remove instructions and display hit counter");
+  //println("Press 0 to remove instructions and display hit counter");
 
 //TouchOSC version
 if(v_push3 == 1.0f) {
@@ -779,9 +779,9 @@ if(!instructionsComplete){
     //spacing+=30;
     fill(255, 0, 0);
     textSize(256);
-    text(hitLaserCounter, width/2, height/3);
+    text(25 - hitLaserCounter, width/2, height/3);
     textSize(64);
-    text("LASERS HIT", width/2, height/2);
+    text("LASERS LEFT TO HIT", width/2, height/2);
     
 }
     
@@ -816,11 +816,13 @@ if(!instructionsComplete){
   //text("rfidTwoTriggered: " + rfidTwoTriggered, width/3, height/3*2);
   
   if(hitLaserCounter >= 25){
-      gateState = 0; 
+    gateState = 0; 
       delay(100);
       laserLevel2 = false;
       laserFail = true;
       laserCounter = 150;
+      
+      attentionYouHaveFailed.play();
   }
   
 

@@ -25,23 +25,23 @@ void rollerBallControlOsc(){
     
 
     
-    if(keyPressed){
-        if(key == '1'){
-          rollerBall = false;
-          rollerBallSuccess = true;
-          rollerBallInstr.stop();
-          excellentWork.play();
-        }
-        if(key == '2'){
-          rollerBall = false;
-          rollerBallFail = true;
-          rollerBallInstr.stop();
-          attentionYouHaveFailed.play();
-        }
+    //if(keyPressed){
+    //    if(key == '1'){
+    //      rollerBall = false;
+    //      rollerBallSuccess = true;
+    //      rollerBallInstr.stop();
+    //      excellentWork.play();
+    //    }
+    //    if(key == '2'){
+    //      rollerBall = false;
+    //      rollerBallFail = true;
+    //      rollerBallInstr.stop();
+    //      attentionYouHaveFailed.play();
+    //    }
       
         
        
-      }
+     // }
       println("ROLLERBALL SCREEN/UNITY");
       println("Press 1 to move to rollerBall Success");
       println("Press 2 to move to rollerBall Fail");

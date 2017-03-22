@@ -41,7 +41,7 @@ if (!audioComplete) {
 
   //override for triggering the laserScreen() by pressing the X   
   if (keyPressed) {
-    if (key == 'x' || key == 'X') {
+    if (key == ' ') {
 
       blackScreenIntro = false;
       floorGridPracticeScreen = true;
@@ -58,6 +58,6 @@ if (!audioComplete) {
   //console feedback to make sure that the experience is running and ready to trigger lasers
   println("FLOOR GRID INSTRUCTION SCREEN");
   println("Press N to show practice symbol after instuctions are complete");
-  println("Press X to go to Practice Screen");
+  println("Press SPACE to go to Practice Screen");
   //println(floorGridInstr.isPlaying());
 }
